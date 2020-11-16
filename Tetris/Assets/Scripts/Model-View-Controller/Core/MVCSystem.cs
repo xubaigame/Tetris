@@ -183,16 +183,13 @@ public static class MVCSystem
         }
 
         //View尝试响应事件
-        if (_commandMap.ContainsKey(eventName))
+        foreach (BaseView v in _views.Values)
         {
-            foreach (BaseView v in _views.Values)
+            if (v.IsEventContains(eventName))
             {
-                if (v.IsEventContains(eventName))
-                {
-                    v.HandleEvent(eventName, data);
-                }
+                v.HandleEvent(eventName, data);
             }
         }
-        
+
     }
 }

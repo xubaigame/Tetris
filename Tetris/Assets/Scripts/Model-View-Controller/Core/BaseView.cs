@@ -29,6 +29,18 @@ public abstract class BaseView :MonoBehaviour
     }
 
     /// <summary>
+    /// 注册响应事件
+    /// </summary>
+    /// <param name="eventName">事件名称</param>
+    public void RegisterAttationEvent(string eventName)
+    {
+        if(!IsEventContains(eventName))
+        {
+            _attationEvents.Add(eventName);
+        }
+    }
+
+    /// <summary>
     /// 响应事件函数
     /// </summary>
     /// <param name="eventName">事件名称</param>
@@ -36,7 +48,7 @@ public abstract class BaseView :MonoBehaviour
     public abstract void HandleEvent(string eventName, params object[] datas);
 
     /// <summary>
-    /// 注册响应事件
+    /// 注册所有响应事件
     /// </summary>
     public virtual void RegisterAttationEvents() { }
 
