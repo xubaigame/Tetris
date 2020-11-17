@@ -63,12 +63,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Consts.cs" />
     <Compile Include="Assets\Scripts\GameRoot.cs" />
+    <Compile Include="Assets\Scripts\MVC\Controller\ChangeMuteController.cs" />
     <Compile Include="Assets\Scripts\MVC\Controller\GameStartController.cs" />
+    <Compile Include="Assets\Scripts\MVC\Controller\SaveDataController.cs" />
     <Compile Include="Assets\Scripts\MVC\Model\GameDataModel.cs" />
     <Compile Include="Assets\Scripts\MVC\View\GameView.cs" />
     <Compile Include="Assets\Scripts\MVC\View\MenuView.cs" />
+    <Compile Include="Assets\Scripts\MVC\View\SettingView.cs" />
     <Compile Include="Assets\Scripts\MVC\View\TopListView.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

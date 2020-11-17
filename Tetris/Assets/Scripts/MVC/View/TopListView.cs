@@ -52,10 +52,10 @@ public class TopListView : BaseView
         {
             gameObject.SetActive(false);
         };
-
     }
     public void OnBackButtonDown()
     {
+        AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         LeaveView();
         SendEvent(Consts.E_EnterMenuView, false);
     }

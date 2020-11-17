@@ -31,6 +31,8 @@ public class MenuView : BaseView
     {
         if(eventName.Equals(Consts.E_EnterMenuView))
         {
+            if (datas.Length >= 2)
+                AudioManager.Instance.SetMuteState((int)datas[1]==1?true:false);
             if((bool)datas[0])
                 EnterView(datas);
         }
@@ -60,19 +62,22 @@ public class MenuView : BaseView
 
     public void OnPlayGameButtonDown()
     {
+        AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         LeaveView();
         SendEvent(Consts.E_EnterGameView);
     }
     public void OnRestartGameButtonDown()
     {
-
+        AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
     }
     public void OnSettingGameButtonDown()
     {
-
+        AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
+        SendEvent(Consts.E_EnterSettingView);
     }
     public void OnTopListButtonDown()
     {
+        AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         SendEvent(Consts.E_EnterTopListView);
     }
 }

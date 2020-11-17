@@ -26,14 +26,15 @@ public class GameDataModel : BaseModel
     public int CurrentScore { get => _currentScore;}
     public int HightestScore { get => _hightestScore;}
     public int GameCount { get => _gameCount;}
+    public int Mute { get => _mute;}
 
     public void InitData()
     {
-        ReadData();
-        SendEvent(Consts.E_EnterMenuView,true);
+        LoadData();
+        SendEvent(Consts.E_EnterMenuView,true,Mute);
     }
 
-    public void ReadData()
+    public void LoadData()
     {
         if(PlayerPrefs.HasKey(Consts.P_GameCount))
         {
@@ -47,5 +48,27 @@ public class GameDataModel : BaseModel
         {
             _mute = PlayerPrefs.GetInt(Consts.P_Mute);
         }
+    }
+    public void SaveData()
+    {
+        PlayerPrefs.SetInt(Consts.P_GameCount,_gameCount);
+        PlayerPrefs.SetInt(Consts.P_HightestScore, _hightestScore);
+        PlayerPrefs.SetInt(Consts.P_Mute, Mute);
+    }
+
+    /// <summary>
+    /// 改变静音状态
+    /// </summary>
+    public void ChangeMuteState()
+    {
+        if (Mute==1)
+        {
+            _mute=0;
+        }
+        else if(Mute==0)
+        {
+            _mute = 1;
+        }
+        SendEvent(Consts.E_ChangeMuteFinished, Mute);
     }
 }

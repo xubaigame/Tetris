@@ -59,6 +59,7 @@ public class GameView : BaseView
 
     public void OnPauseGameButtonDown()
     {
+        AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         LeaveView();
         SendEvent(Consts.E_EnterMenuView,true);
     }

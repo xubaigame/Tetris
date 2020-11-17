@@ -13,11 +13,17 @@ public class GameRoot : MonoBehaviour
     public BaseView MenuView;
     public BaseView GameView;
     public BaseView TopListView;
+    public BaseView SettingView;
     public void Start()
     {
         MVCSystem.RegisterController(Consts.E_GameStart,typeof(GameStartController));
 
-        MVCSystem.SendEvent(Consts.E_GameStart,MenuView,GameView,TopListView);
+        MVCSystem.SendEvent(Consts.E_GameStart,MenuView,GameView,TopListView,SettingView);
         
+    }
+
+    public void OnDestroy()
+    {
+        MVCSystem.SendEvent(Consts.E_SaveData);
     }
 }
