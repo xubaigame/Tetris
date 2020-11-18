@@ -39,6 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8702176589884874117}
+  - component: {fileID: 1629250787}
   m_Layer: 0
   m_Name: Shape_4
   m_TagString: Untagged
@@ -65,6 +66,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1629250787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2821688124754058705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3008ecdeff5ee8429ab73ba3268d60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minPositionX: 0
+  maxPositionx: 7
 --- !u!1 &3011690545426388128
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,7 +92,7 @@ GameObject:
   - component: {fileID: 4070927610717414702}
   m_Layer: 0
   m_Name: Block
-  m_TagString: block
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +173,7 @@ GameObject:
   - component: {fileID: 5088741490876117672}
   m_Layer: 0
   m_Name: Block (2)
-  m_TagString: block
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,7 +254,7 @@ GameObject:
   - component: {fileID: 8279574897559806879}
   m_Layer: 0
   m_Name: Block (1)
-  m_TagString: block
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,7 +335,7 @@ GameObject:
   - component: {fileID: 7792516471206568157}
   m_Layer: 0
   m_Name: Block (3)
-  m_TagString: block
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

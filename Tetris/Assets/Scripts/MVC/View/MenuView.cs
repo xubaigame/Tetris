@@ -68,13 +68,14 @@ public class MenuView : BaseView
         AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         LeaveView();
         SendEvent(Consts.E_EnterGameView,true);
-        SendEvent(Consts.E_EnterLoseGameView);
+        //SendEvent(Consts.E_EnterLoseGameView);
     }
     public void OnRestartGameButtonDown()
     {
         AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         LeaveView();
+        SendEvent(Consts.E_ResumeGame);
         SendEvent(Consts.E_EnterGameView,false);
     }
     public void OnSettingGameButtonDown()

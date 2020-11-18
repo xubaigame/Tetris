@@ -30,6 +30,12 @@ public static class Consts
     public readonly static string E_ClearDataFinished = "E_ClearDataFinished";
     public readonly static string E_SaveData = "SaveData";
 
+    public readonly static string E_ShapeFallDownStart = "ShapFallDownStart";
+    public readonly static string E_ShapeFallDownFinished = "ShapFallDownFinished";
+    public readonly static string E_ShapePlaceStart = "ShapePlaceStart";
+    public readonly static string E_ShapePlaceFinished = "ShapePlaceFinished";
+    public readonly static string E_PauseGame = "PauseGame";
+    public readonly static string E_ResumeGame = "ResumeGame";
     //ViewName
     public readonly static string V_Menu = "MenuView";
     public readonly static string V_Game = "GameView";
@@ -39,6 +45,7 @@ public static class Consts
 
     //ModelName
     public readonly static string M_GameData = "GameDataModel";
+    public readonly static string M_Map = "MapModel";
     #endregion
 
     //PlayerPrefabs

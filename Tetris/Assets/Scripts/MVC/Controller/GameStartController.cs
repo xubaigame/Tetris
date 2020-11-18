@@ -14,7 +14,7 @@ public class GameStartController : BaseController
     {
         //注册model
         RegisterModel(new GameDataModel());
-
+        RegisterModel(new MapModel());
         //注册View
         RegisterView(datas[0] as BaseView);
         RegisterView(datas[1] as BaseView);
@@ -27,6 +27,10 @@ public class GameStartController : BaseController
         RegisterController(Consts.E_GameBegin, typeof(GameBeginController));
         RegisterController(Consts.E_GameEnd, typeof(GameEndController));
         RegisterController(Consts.E_ClearDataStart, typeof(ClearDataController));
+        RegisterController(Consts.E_ShapeFallDownStart, typeof(ShapFallDownController));
+        RegisterController(Consts.E_ShapePlaceStart, typeof(ShapePlaceController));
+        RegisterController(Consts.E_PauseGame, typeof(PauseGameController));
+        RegisterController(Consts.E_ResumeGame, typeof(ResumeGameController));
         //调用模型方法
         (GetModel(Consts.M_GameData) as GameDataModel).InitData();
     }

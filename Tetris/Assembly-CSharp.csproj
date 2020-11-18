@@ -71,13 +71,20 @@
     <Compile Include="Assets\Scripts\MVC\Controller\GameBeginController.cs" />
     <Compile Include="Assets\Scripts\MVC\Controller\GameEndController.cs" />
     <Compile Include="Assets\Scripts\MVC\Controller\GameStartController.cs" />
+    <Compile Include="Assets\Scripts\MVC\Controller\PauseGameController.cs" />
+    <Compile Include="Assets\Scripts\MVC\Controller\ResumeGameController.cs" />
     <Compile Include="Assets\Scripts\MVC\Controller\SaveDataController.cs" />
+    <Compile Include="Assets\Scripts\MVC\Controller\ShapFallDownController.cs" />
+    <Compile Include="Assets\Scripts\MVC\Controller\ShapePlaceController.cs" />
     <Compile Include="Assets\Scripts\MVC\Model\GameDataModel.cs" />
+    <Compile Include="Assets\Scripts\MVC\Model\MapModel.cs" />
     <Compile Include="Assets\Scripts\MVC\View\GameView.cs" />
     <Compile Include="Assets\Scripts\MVC\View\LoseGameView.cs" />
     <Compile Include="Assets\Scripts\MVC\View\MenuView.cs" />
     <Compile Include="Assets\Scripts\MVC\View\SettingView.cs" />
     <Compile Include="Assets\Scripts\MVC\View\TopListView.cs" />
+    <Compile Include="Assets\Scripts\Shape\Shape.cs" />
+    <Compile Include="Assets\Scripts\Tool\GameTools.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
