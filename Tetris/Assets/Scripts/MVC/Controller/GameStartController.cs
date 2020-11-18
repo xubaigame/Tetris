@@ -20,9 +20,13 @@ public class GameStartController : BaseController
         RegisterView(datas[1] as BaseView);
         RegisterView(datas[2] as BaseView);
         RegisterView(datas[3] as BaseView);
+        RegisterView(datas[4] as BaseView);
         //注册Controller
         RegisterController(Consts.E_ChangeMuteStart, typeof(ChangeMuteController));
         RegisterController(Consts.E_SaveData, typeof(SaveDataController));
+        RegisterController(Consts.E_GameBegin, typeof(GameBeginController));
+        RegisterController(Consts.E_GameEnd, typeof(GameEndController));
+        RegisterController(Consts.E_ClearDataStart, typeof(ClearDataController));
         //调用模型方法
         (GetModel(Consts.M_GameData) as GameDataModel).InitData();
     }

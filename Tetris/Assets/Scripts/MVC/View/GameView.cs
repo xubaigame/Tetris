@@ -16,6 +16,8 @@ public class GameView : BaseView
     public RectTransform PauseGameButton;
     public RectTransform HightestScore;
 
+    public Text txt_CurrentScore;
+    public Text txt_HightestScore;
     private GameDataModel m_GameDataModel;
     public override string Name
     {
@@ -25,19 +27,30 @@ public class GameView : BaseView
     public override void RegisterAttationEvents()
     {
         RegisterAttationEvent(Consts.E_EnterGameView);
+        RegisterAttationEvent(Consts.E_LeaveGameView);
     }
 
     public override void HandleEvent(string eventName, params object[] datas)
     {
         if(eventName.Equals(Consts.E_EnterGameView))
         {
+            
             m_GameDataModel = MVCSystem.GetModel(Consts.M_GameData) as GameDataModel;
+            if (m_GameDataModel.IsPlaying == false||(bool)datas[0])
+                SendEvent(Consts.E_GameBegin);
             EnterView();
+
+        }
+        else if(eventName.Equals(Consts.E_LeaveGameView))
+        {
+            LeaveView();
         }
     }
 
     public void EnterView()
     {
+        txt_CurrentScore.text = m_GameDataModel.CurrentScore.ToString();
+        txt_HightestScore.text = m_GameDataModel.HightestScore.ToString();
         gameObject.SetActive(true);
         CurrentScore.DOAnchorPosY(-CurrentScore.sizeDelta.y/2, 0.5f);
         PauseGameButton.DOAnchorPosY(-CurrentScore.sizeDelta.y / 2, 0.5f);
@@ -52,6 +65,8 @@ public class GameView : BaseView
         HightestScore.DOAnchorPosY(HightestScore.sizeDelta.y / 2, 0.5f).onComplete+=()=>
         {
             gameObject.SetActive(false);
+            txt_CurrentScore.text = string.Empty;
+            txt_HightestScore.text = string.Empty;
         };
         Camera.main.DOOrthoSize(m_GameDataModel.MaxCameraSize, 0.5f);
         

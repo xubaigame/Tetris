@@ -14,11 +14,12 @@ public class GameRoot : MonoBehaviour
     public BaseView GameView;
     public BaseView TopListView;
     public BaseView SettingView;
+    public BaseView LoseGameView;
     public void Start()
     {
         MVCSystem.RegisterController(Consts.E_GameStart,typeof(GameStartController));
 
-        MVCSystem.SendEvent(Consts.E_GameStart,MenuView,GameView,TopListView,SettingView);
+        MVCSystem.SendEvent(Consts.E_GameStart,MenuView,GameView,TopListView,SettingView, LoseGameView);
         
     }
 

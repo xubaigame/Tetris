@@ -13,10 +13,12 @@ using UnityEngine.UI;
 public class MenuView : BaseView
 {
 
-    public Text GameTitle;
-    public RectTransform ButtonGroup;
+    public Text gameTitle;
+    public RectTransform buttonGroup;
+    public Transform map;
+    public GameObject restartButton;
 
-    public Transform Map;
+    private GameDataModel _gameData;
 
     public override string Name
     {
@@ -31,10 +33,11 @@ public class MenuView : BaseView
     {
         if(eventName.Equals(Consts.E_EnterMenuView))
         {
-            if (datas.Length >= 2)
-                AudioManager.Instance.SetMuteState((int)datas[1]==1?true:false);
             if((bool)datas[0])
                 EnterView(datas);
+            _gameData = GetModel(Consts.M_GameData) as GameDataModel;
+            AudioManager.Instance.SetMuteState(_gameData.Mute == 1 ? true : false);
+            restartButton.SetActive(_gameData.IsPlaying);
         }
     }
 
@@ -42,18 +45,18 @@ public class MenuView : BaseView
     {
         gameObject.SetActive(true);
 
-        GameTitle.rectTransform.DOAnchorPosY(0, 0.5f);
+        gameTitle.rectTransform.DOAnchorPosY(0, 0.5f);
 
-        ButtonGroup.DOAnchorPosY(ButtonGroup.sizeDelta.y/2, 0.5f);
+        buttonGroup.DOAnchorPosY(buttonGroup.sizeDelta.y/2, 0.5f);
 
-        Map.DOScale(Vector3.one, 0.5f);
+        map.DOScale(Vector3.one, 0.5f);
     }
 
     private void LeaveView()
     {
-        GameTitle.rectTransform.DOAnchorPosY(GameTitle.rectTransform.sizeDelta.y, 0.5f);
+        gameTitle.rectTransform.DOAnchorPosY(gameTitle.rectTransform.sizeDelta.y, 0.5f);
 
-        ButtonGroup.DOAnchorPosY(-ButtonGroup.sizeDelta.y / 2, 0.5f).onComplete=() =>
+        buttonGroup.DOAnchorPosY(-buttonGroup.sizeDelta.y / 2, 0.5f).onComplete=() =>
         {
             gameObject.SetActive(false);
         };
@@ -64,11 +67,15 @@ public class MenuView : BaseView
     {
         AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         LeaveView();
-        SendEvent(Consts.E_EnterGameView);
+        SendEvent(Consts.E_EnterGameView,true);
+        SendEvent(Consts.E_EnterLoseGameView);
     }
     public void OnRestartGameButtonDown()
     {
         AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
+        AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
+        LeaveView();
+        SendEvent(Consts.E_EnterGameView,false);
     }
     public void OnSettingGameButtonDown()
     {

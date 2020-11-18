@@ -12,20 +12,30 @@ public static class Consts
 
     //EventName
     public readonly static string E_GameStart = "GameStart";
+
     public readonly static string E_EnterMenuView = "EnterMenuView";
     public readonly static string E_EnterGameView = "EnterGameView";
+    public readonly static string E_LeaveGameView = "LeaveGameView";
     public readonly static string E_EnterTopListView = "EnterTopListView";
     public readonly static string E_EnterSettingView = "EnterSettingView";
+    public readonly static string E_EnterLoseGameView = "EnterLoseGameView";
 
     public readonly static string E_ChangeMuteStart = "ChangeMuteStart";
     public readonly static string E_ChangeMuteFinished = "ChangeMuteFinished";
 
+    public readonly static string E_GameBegin = "GameBegin";
+    public readonly static string E_GameEnd = "GameEnd";
+
+    public readonly static string E_ClearDataStart = "ClearDataStart";
+    public readonly static string E_ClearDataFinished = "E_ClearDataFinished";
     public readonly static string E_SaveData = "SaveData";
+
     //ViewName
     public readonly static string V_Menu = "MenuView";
     public readonly static string V_Game = "GameView";
     public readonly static string V_TopList = "TopListView";
     public readonly static string V_Setting = "SettingView";
+    public readonly static string V_LoseGame = "LoseGame";
 
     //ModelName
     public readonly static string M_GameData = "GameDataModel";

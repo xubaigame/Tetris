@@ -13,7 +13,7 @@ using UnityEngine;
 
 public class SettingView : BaseView
 {
-    private GameDataModel dataModel;
+    private GameDataModel _gameData;
     public GameObject muteFlag;
     private bool _mute;
 
@@ -32,13 +32,14 @@ public class SettingView : BaseView
         if(eventName.Equals(Consts.E_EnterSettingView))
         {
             //_mute = (GetModel(Consts.M_GameData) as GameDataModel).Mute == 1 ? true : false;
-            dataModel = GetModel(Consts.M_GameData) as GameDataModel;
+            _gameData = GetModel(Consts.M_GameData) as GameDataModel;
+            _mute = _gameData.Mute == 0 ? false : true;
             EnterView();
         }
         if(eventName.Equals(Consts.E_ChangeMuteFinished))
         {
             //_mute = (int)datas[0]==0?false:true;
-            _mute = dataModel.Mute == 0 ? false : true;
+            _mute = _gameData.Mute == 0 ? false : true;
             AudioManager.Instance.SetMuteState(_mute);
             muteFlag.SetActive(_mute);
         }
@@ -60,7 +61,7 @@ public class SettingView : BaseView
 
     public void OnBackButtonDown()
     {
-        AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
+        //AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         LeaveView();
         SendEvent(Consts.E_EnterMenuView, false);
     }

@@ -359,6 +359,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 733558080}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnBackHomeButtonDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82659a9c849aaaa4ab92ca22717f9922, type: 3}
 --- !u!224 &5034669 stripped
@@ -1354,6 +1384,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 733558080}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRestartGameButtonDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82659a9c849aaaa4ab92ca22717f9922, type: 3}
@@ -2638,6 +2698,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5300410674985265783, guid: 1d692a06b46e0c443b77a906339de90d,
     type: 3}
   m_PrefabInstance: {fileID: 227399084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &228531906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1173709832239366404, guid: 82659a9c849aaaa4ab92ca22717f9922,
+    type: 3}
+  m_PrefabInstance: {fileID: 1577774163}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &236574057
 PrefabInstance:
@@ -7170,6 +7236,7 @@ GameObject:
   - component: {fileID: 733558077}
   - component: {fileID: 733558079}
   - component: {fileID: 733558078}
+  - component: {fileID: 733558080}
   m_Layer: 5
   m_Name: LoseGameWindow
   m_TagString: Untagged
@@ -7234,6 +7301,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733558076}
   m_CullTransparentMesh: 0
+--- !u!114 &733558080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733558076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04bd1e5b5d6f534c897badc4c1ee0e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentScore: {fileID: 638310783}
 --- !u!1001 &740121089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14721,9 +14801,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95bb070c2f5d4e48b7653c6c63f1a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameTitle: {fileID: 1782834733}
-  ButtonGroup: {fileID: 194080699}
-  Map: {fileID: 337260802}
+  gameTitle: {fileID: 1782834733}
+  buttonGroup: {fileID: 194080699}
+  map: {fileID: 337260802}
+  restartButton: {fileID: 228531906}
 --- !u!1001 &1558554184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16462,8 +16543,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1733843045}
-  - component: {fileID: 1733843044}
   - component: {fileID: 1733843048}
+  - component: {fileID: 1733843044}
   - component: {fileID: 1733843047}
   - component: {fileID: 1733843046}
   m_Layer: 0
@@ -16489,6 +16570,7 @@ MonoBehaviour:
   GameView: {fileID: 1967834206}
   TopListView: {fileID: 1273223931}
   SettingView: {fileID: 730913334}
+  LoseGameView: {fileID: 733558080}
 --- !u!4 &1733843045
 Transform:
   m_ObjectHideFlags: 0
@@ -18917,6 +18999,36 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1273223931}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClearDataButtonDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683993941012090884, guid: 82659a9c849aaaa4ab92ca22717f9922,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82659a9c849aaaa4ab92ca22717f9922, type: 3}
 --- !u!224 &1957539174 stripped
@@ -19054,6 +19166,8 @@ MonoBehaviour:
   CurrentScore: {fileID: 1607600516}
   PauseGameButton: {fileID: 1126348761}
   HightestScore: {fileID: 1483524234}
+  txt_CurrentScore: {fileID: 1501885595}
+  txt_HightestScore: {fileID: 261615546}
 --- !u!1001 &1969830137
 PrefabInstance:
   m_ObjectHideFlags: 0

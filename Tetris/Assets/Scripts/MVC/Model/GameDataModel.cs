@@ -16,6 +16,7 @@ public class GameDataModel : BaseModel
     private int _hightestScore = 0;
     private int _gameCount = 0;
     private int _mute = 0;
+    private bool _isPlaying = false;
 
     public override string Name
     {
@@ -27,11 +28,12 @@ public class GameDataModel : BaseModel
     public int HightestScore { get => _hightestScore;}
     public int GameCount { get => _gameCount;}
     public int Mute { get => _mute;}
+    public bool IsPlaying { get => _isPlaying;}
 
     public void InitData()
     {
         LoadData();
-        SendEvent(Consts.E_EnterMenuView,true,Mute);
+        SendEvent(Consts.E_EnterMenuView,true);
     }
 
     public void LoadData()
@@ -51,11 +53,25 @@ public class GameDataModel : BaseModel
     }
     public void SaveData()
     {
+        
         PlayerPrefs.SetInt(Consts.P_GameCount,_gameCount);
         PlayerPrefs.SetInt(Consts.P_HightestScore, _hightestScore);
         PlayerPrefs.SetInt(Consts.P_Mute, Mute);
     }
-
+    public void ClearData()
+    {
+        if (IsPlaying)
+        {
+            _gameCount = 1;
+            _hightestScore = _currentScore;
+        }
+        else
+        {
+            _gameCount = 0;
+            _hightestScore = 0;
+        } 
+        SendEvent(Consts.E_ClearDataFinished);
+    }
     /// <summary>
     /// 改变静音状态
     /// </summary>
@@ -70,5 +86,19 @@ public class GameDataModel : BaseModel
             _mute = 1;
         }
         SendEvent(Consts.E_ChangeMuteFinished, Mute);
+    }
+
+    public void NewGame()
+    {
+        _currentScore = 0;
+        _gameCount++;
+        _isPlaying = true;
+    }
+
+    public void GameEnd()
+    {
+        _currentScore = 0;
+        _isPlaying = false;
+        SaveData();
     }
 }

@@ -24,6 +24,7 @@ public class TopListView : BaseView
     public override void RegisterAttationEvents()
     {
         RegisterAttationEvent(Consts.E_EnterTopListView);
+        RegisterAttationEvent(Consts.E_ClearDataFinished);
     }
 
     public override void HandleEvent(string eventName, params object[] datas)
@@ -32,6 +33,11 @@ public class TopListView : BaseView
         {
             m_GameDataModel = MVCSystem.GetModel(Consts.M_GameData) as GameDataModel;
             EnterView();
+        }
+        else if(eventName.Equals(Consts.E_ClearDataFinished))
+        {
+            txt_GameCount.text = m_GameDataModel.GameCount.ToString();
+            txt_HeightestScore.text = m_GameDataModel.HightestScore.ToString();
         }
     }
 
@@ -55,8 +61,14 @@ public class TopListView : BaseView
     }
     public void OnBackButtonDown()
     {
-        AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
+        //AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         LeaveView();
         SendEvent(Consts.E_EnterMenuView, false);
+    }
+
+    public void OnClearDataButtonDown()
+    {
+        AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
+        SendEvent(Consts.E_ClearDataStart);
     }
 }
