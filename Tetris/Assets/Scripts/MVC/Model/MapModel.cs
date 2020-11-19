@@ -63,7 +63,12 @@ public class MapModel:BaseModel
     {
         _pause = false;
     }
-    public void IsValidMapPosition(Transform shape)
+
+    public void ChangeSpeed(float speed)
+    {
+        _fallTime = _fallTime*speed;
+    }
+    public void IsValidMapPosition(Transform shape,object operation)
     {
         bool result = true;
         foreach (Transform child in shape)
@@ -83,7 +88,7 @@ public class MapModel:BaseModel
                 break;
             }
         }
-        SendEvent(Consts.E_ShapeFallDownFinished, result);
+        SendEvent(Consts.E_ShapeMoveFinished, result, operation);
     }
 
     private bool IsMapPosition(Vector2 position)
@@ -100,6 +105,66 @@ public class MapModel:BaseModel
             int y = Mathf.RoundToInt(child.position.y);
             _mapTransform[x, y] = child;
         }
-        SendEvent(Consts.E_ShapePlaceFinished);
+        int count = CheckMap();
+        SendEvent(Consts.E_ShapePlaceFinished, count);
+        ChangeSpeed(Consts.ShapeFallDownSpeed);
+
+    }
+
+    private int CheckMap()
+    {
+        int count = 0;
+        for (int i = 0; i < MAX_ROWS; i++)
+        {
+            bool isFull = CheckIsRowFull(i);
+            if(isFull)
+            {
+                count++;
+                DeleteRow(i);
+                MoveDownRowsAbove(i + 1);
+                i--;
+            }
+        }
+        return count;
+    }
+
+    private bool CheckIsRowFull(int row)
+    {
+        for (int i = 0; i < MAX_COLUMNS; i++)
+        {
+            if (_mapTransform[i, row] == null)
+                return false;
+        }
+        return true;
+    }
+
+    private void DeleteRow(int row)
+    {
+        for(int i=0;i<MAX_COLUMNS;i++)
+        {
+            GameTools.Instance.DestroyGameObject(_mapTransform[i, row].gameObject);
+            _mapTransform[i, row] = null;
+        }
+    }
+
+    private void MoveDownRowsAbove(int row)
+    {
+        for (int i = row; i < MAX_ROWS; i++)
+        {
+            MoveDownRow(i);
+        }
+    }
+
+    private void MoveDownRow(int row)
+    {
+        for (int i = 0; i < MAX_COLUMNS; i++)
+        {
+            if(_mapTransform[i,row]!=null)
+            {
+                _mapTransform[i, row - 1] = _mapTransform[i, row];
+                _mapTransform[i, row] = null;
+                _mapTransform[i, row - 1].position += new Vector3(0, -1, 0);
+            }
+        }
     }
 }

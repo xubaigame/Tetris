@@ -27,7 +27,9 @@ public class GameStartController : BaseController
         RegisterController(Consts.E_GameBegin, typeof(GameBeginController));
         RegisterController(Consts.E_GameEnd, typeof(GameEndController));
         RegisterController(Consts.E_ClearDataStart, typeof(ClearDataController));
-        RegisterController(Consts.E_ShapeFallDownStart, typeof(ShapFallDownController));
+        RegisterController(Consts.E_AddCurrentScoreStart, typeof(AddCurrentScoreController));
+        RegisterController(Consts.E_ChangShaepDownSpeed, typeof(ChangeSpeedController));
+        RegisterController(Consts.E_ShapeMoveStart, typeof(ShapeMoveController));
         RegisterController(Consts.E_ShapePlaceStart, typeof(ShapePlaceController));
         RegisterController(Consts.E_PauseGame, typeof(PauseGameController));
         RegisterController(Consts.E_ResumeGame, typeof(ResumeGameController));

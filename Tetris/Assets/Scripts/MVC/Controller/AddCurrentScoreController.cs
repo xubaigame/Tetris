@@ -1,17 +1,17 @@
 /****************************************************
-    文件：ShapFallDownController.cs
+    文件：AddCurrentScoreController.cs
 	作者：积极向上小木木
     邮箱: positivemumu@126.com
-    日期：2020/11/19 0:6:13
-	功能：图形下落Controller类
+    日期：2020/11/20 0:11:4
+	功能：增加分数Controller类
 *****************************************************/
 
 using UnityEngine;
 
-public class ShapFallDownController : BaseController
+public class AddCurrentScoreController : BaseController
 {
     public override void Execute(params object[] datas)
     {
-        (GetModel(Consts.M_Map) as MapModel).IsValidMapPosition((Transform)datas[0]);
+       (GetModel(Consts.M_GameData) as GameDataModel).AddCurrentScore((int)datas[0]);
     }
 }

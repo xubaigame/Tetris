@@ -36,7 +36,8 @@ public class GameView : BaseView
     {
         RegisterAttationEvent(Consts.E_EnterGameView);
         RegisterAttationEvent(Consts.E_LeaveGameView);
-        RegisterAttationEvent(Consts.E_ShapeFallDownFinished);
+        RegisterAttationEvent(Consts.E_AddCurrentScoreFinished);
+        RegisterAttationEvent(Consts.E_ShapeMoveFinished);
         RegisterAttationEvent(Consts.E_ShapePlaceFinished);
     }
 
@@ -48,11 +49,11 @@ public class GameView : BaseView
             m_MapModel = GetModel(Consts.M_Map) as MapModel;
             if (m_GameDataModel.IsPlaying == false || (bool)datas[0])
             {
-                if(_currentShape!=null)
+                if (_currentShape != null)
                 {
                     Destroy(_currentShape.gameObject);
                     _currentShape = null;
-                }    
+                }
                 SendEvent(Consts.E_GameBegin);
             }
 
@@ -63,24 +64,44 @@ public class GameView : BaseView
         {
             LeaveView();
         }
-        else if (eventName.Equals(Consts.E_ShapeFallDownFinished))
+        else if (eventName.Equals(Consts.E_AddCurrentScoreFinished))
+        {
+            UpdateScore();
+        }
+        else if (eventName.Equals(Consts.E_ShapeMoveFinished))
         {
             if ((bool)datas[0] == false)
             {
-                _currentShape.Up();
-                SendEvent(Consts.E_ShapePlaceStart, _currentShape.transform);
+                switch ((int)datas[1])
+                {
+                    case 0:
+                        _currentShape.Up();
+                        SendEvent(Consts.E_ShapePlaceStart, _currentShape.transform);
+                        break;
+                    case 1:
+                        _currentShape.Right();
+                        break;
+                    case 2:
+                        _currentShape.Left();
+                        break;
+                    case 3:
+                        _currentShape.AnticlockwiseRotation();
+                        break;
+                }
+
             }
         }
         else if (eventName.Equals(Consts.E_ShapePlaceFinished))
         {
+            SendEvent(Consts.E_AddCurrentScoreStart, (int)datas[0]*Consts.ClearLineScore);
             _currentShape = null;
+            
         }
     }
 
     public void EnterView()
     {
-        txt_CurrentScore.text = m_GameDataModel.CurrentScore.ToString();
-        txt_HightestScore.text = m_GameDataModel.HightestScore.ToString();
+        UpdateScore();
         gameObject.SetActive(true);
         CurrentScore.DOAnchorPosY(-CurrentScore.sizeDelta.y/2, 0.5f);
         PauseGameButton.DOAnchorPosY(-CurrentScore.sizeDelta.y / 2, 0.5f);
@@ -100,6 +121,12 @@ public class GameView : BaseView
         };
         Camera.main.DOOrthoSize(m_GameDataModel.MaxCameraSize, 0.5f);
         
+    }
+
+    public void UpdateScore()
+    {
+        txt_CurrentScore.text = m_GameDataModel.CurrentScore.ToString();
+        txt_HightestScore.text = m_GameDataModel.HightestScore.ToString();
     }
 
     public void OnPauseGameButtonDown()
@@ -124,9 +151,28 @@ public class GameView : BaseView
                 if (_timer > m_MapModel.FallTime)
                 {
                     _timer = 0;
-                    _currentShape.Fall();
-                    SendEvent(Consts.E_ShapeFallDownStart, _currentShape.transform);
+                    _currentShape.Donw();
+                    SendEvent(Consts.E_ShapeMoveStart, _currentShape.transform,0);
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                _currentShape.Left();
+                SendEvent(Consts.E_ShapeMoveStart, _currentShape.transform, 1);
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                _currentShape.Right();
+                SendEvent(Consts.E_ShapeMoveStart, _currentShape.transform, 2);
+            }
+            if(Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                _currentShape.ClockwiseRotation();
+                SendEvent(Consts.E_ShapeMoveStart, _currentShape.transform, 3);
+            }
+            if(Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                SendEvent(Consts.E_ChangShaepDownSpeed,1/Consts.ShapeFallDownSpeed);
             }
         }
     }

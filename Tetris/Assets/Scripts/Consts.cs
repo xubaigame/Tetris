@@ -29,11 +29,14 @@ public static class Consts
     public readonly static string E_ClearDataStart = "ClearDataStart";
     public readonly static string E_ClearDataFinished = "E_ClearDataFinished";
     public readonly static string E_SaveData = "SaveData";
+    public readonly static string E_AddCurrentScoreStart = "AddCurrentScoreStart";
+    public readonly static string E_AddCurrentScoreFinished = "AddCurrentScoreFinished";
 
-    public readonly static string E_ShapeFallDownStart = "ShapFallDownStart";
-    public readonly static string E_ShapeFallDownFinished = "ShapFallDownFinished";
+    public readonly static string E_ShapeMoveStart = "ShapeMoveStart";
+    public readonly static string E_ShapeMoveFinished = "ShapeMoveFinished";
     public readonly static string E_ShapePlaceStart = "ShapePlaceStart";
     public readonly static string E_ShapePlaceFinished = "ShapePlaceFinished";
+    public readonly static string E_ChangShaepDownSpeed = "ChangShaepDownSpeed";
     public readonly static string E_PauseGame = "PauseGame";
     public readonly static string E_ResumeGame = "ResumeGame";
     //ViewName
@@ -61,4 +64,6 @@ public static class Consts
     public readonly static string A_Lineclear = "Lineclear";
     public readonly static string A_Gameover = "Gameover";
 
+    public readonly static float ShapeFallDownSpeed = 8f;
+    public readonly static int ClearLineScore = 100;
 }

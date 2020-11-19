@@ -30,7 +30,7 @@ public class Shape : MonoBehaviour
         transform.position = new Vector3(x, 20, 0);
     }
 
-    public void Fall()
+    public void Donw()
     {
         Vector3 pos = transform.position;
         pos.y -= 1;
@@ -43,4 +43,32 @@ public class Shape : MonoBehaviour
         pos.y += 1;
         transform.position = pos;
     }
+
+    public void Left()
+    {
+        Vector3 pos = transform.position;
+        pos.x -= 1;
+        transform.position = pos;
+    }
+
+    public void Right()
+    {
+        Vector3 pos = transform.position;
+        pos.x += 1;
+        transform.position = pos;
+    }
+
+    public void ClockwiseRotation()
+    {
+        transform.RotateAround(pivot.position,Vector3.forward,90);
+    }
+
+    public void AnticlockwiseRotation()
+    {
+        transform.RotateAround(pivot.position, Vector3.forward, -90);
+
+    }
+
+
+
 }

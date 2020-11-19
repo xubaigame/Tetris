@@ -58,6 +58,16 @@ public class GameDataModel : BaseModel
         PlayerPrefs.SetInt(Consts.P_HightestScore, _hightestScore);
         PlayerPrefs.SetInt(Consts.P_Mute, Mute);
     }
+
+    public void AddCurrentScore(int score)
+    {
+        _currentScore += score;
+        if(_currentScore>_hightestScore)
+        {
+            _hightestScore = _currentScore;
+        }
+        SendEvent(Consts.E_AddCurrentScoreFinished);
+    }
     public void ClearData()
     {
         if (IsPlaying)
