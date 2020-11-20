@@ -43,6 +43,7 @@ public class MenuView : BaseView
 
     private void EnterView(params object[] datas)
     {
+        //map.localScale = Vector3.zero;
         gameObject.SetActive(true);
 
         gameTitle.rectTransform.DOAnchorPosY(0, 0.5f);
@@ -55,7 +56,6 @@ public class MenuView : BaseView
     private void LeaveView()
     {
         gameTitle.rectTransform.DOAnchorPosY(gameTitle.rectTransform.sizeDelta.y, 0.5f);
-
         buttonGroup.DOAnchorPosY(-buttonGroup.sizeDelta.y / 2, 0.5f).onComplete=() =>
         {
             gameObject.SetActive(false);

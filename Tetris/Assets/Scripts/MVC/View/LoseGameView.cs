@@ -43,6 +43,7 @@ public class LoseGameView : BaseView
     {
         transform.GetChild(0).DOScale(Vector3.zero, 0.5f).onComplete = () =>
         {
+            CurrentScore.text = string.Empty;
             gameObject.SetActive(false);
         };
     }
@@ -50,7 +51,7 @@ public class LoseGameView : BaseView
     public void OnRestartGameButtonDown()
     {
         AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
-        SendEvent(Consts.E_GameEnd);
+        SendEvent(Consts.E_GameEnd,true);
         LeaveView();
         SendEvent(Consts.E_EnterGameView,true);
     }
@@ -58,7 +59,7 @@ public class LoseGameView : BaseView
     public void OnBackHomeButtonDown()
     {
         AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
-        SendEvent(Consts.E_GameEnd);
+        SendEvent(Consts.E_GameEnd,true);
         LeaveView();
         SendEvent(Consts.E_LeaveGameView);
         SendEvent(Consts.E_EnterMenuView, true);

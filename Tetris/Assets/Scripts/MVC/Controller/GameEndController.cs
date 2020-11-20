@@ -13,6 +13,6 @@ public class GameEndController : BaseController
     public override void Execute(params object[] datas)
     {
         (GetModel(Consts.M_GameData) as GameDataModel).GameEnd();
-        (GetModel(Consts.M_Map) as MapModel).GameEnd();
+        (GetModel(Consts.M_Map) as MapModel).GameEnd((bool)datas[0]);
     }
 }

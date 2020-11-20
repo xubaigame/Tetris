@@ -107,7 +107,6 @@ public class GameDataModel : BaseModel
 
     public void GameEnd()
     {
-        _currentScore = 0;
         _isPlaying = false;
         SaveData();
     }

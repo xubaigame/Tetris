@@ -70,26 +70,43 @@ public class GameView : BaseView
         }
         else if (eventName.Equals(Consts.E_ShapeMoveFinished))
         {
-            if ((bool)datas[0] == false)
+            switch ((int)datas[1])
             {
-                switch ((int)datas[1])
-                {
-                    case 0:
+                case 0:
+                    if ((bool)datas[0] == false)
+                    {
                         _currentShape.Up();
                         SendEvent(Consts.E_ShapePlaceStart, _currentShape.transform);
-                        break;
-                    case 1:
+                    }
+                    else
+                        AudioManager.Instance.PlayUIMusic(Consts.A_ShapDrop);
+                    break;
+                case 1:
+                    if ((bool)datas[0] == false)
+                    {
                         _currentShape.Right();
-                        break;
-                    case 2:
+                    }
+                    else
+                        AudioManager.Instance.PlayUIMusic(Consts.A_Balloon);
+                    break;
+                case 2:
+                    if ((bool)datas[0] == false)
+                    {
                         _currentShape.Left();
-                        break;
-                    case 3:
+                    }
+                    else
+                        AudioManager.Instance.PlayUIMusic(Consts.A_Balloon);
+                    break;
+                case 3:
+                    if ((bool)datas[0] == false)
+                    {
                         _currentShape.AnticlockwiseRotation();
-                        break;
-                }
-
+                    }
+                    else
+                        AudioManager.Instance.PlayUIMusic(Consts.A_Balloon);
+                    break;
             }
+        
         }
         else if (eventName.Equals(Consts.E_ShapePlaceFinished))
         {
@@ -172,7 +189,7 @@ public class GameView : BaseView
             }
             if(Input.GetKeyDown(KeyCode.DownArrow))
             {
-                SendEvent(Consts.E_ChangShaepDownSpeed,1/Consts.ShapeFallDownSpeed);
+                SendEvent(Consts.E_ChangShaepDownSpeed);
             }
         }
     }

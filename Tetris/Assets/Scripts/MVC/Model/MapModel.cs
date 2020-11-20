@@ -20,7 +20,7 @@ public class MapModel:BaseModel
     public const int MAX_ROWS = 23;
     public const int MAX_COLUMNS = 10;
 
-    private float _fallTime = 0.8f;
+    private float _fallTime = Consts.ShapeDownSpeed;
 
     private bool _pause = false;
     public bool Pause { get => _pause; }
@@ -34,11 +34,11 @@ public class MapModel:BaseModel
         _pause = false;
     }
 
-    public void GameEnd()
+    public void GameEnd(bool clearMap)
     {
-        ClearMap();
-
-        _pause = false;
+        if(clearMap)
+            ClearMap();
+        _pause = true;
     }
     public void ClearMap()
     {
@@ -64,9 +64,12 @@ public class MapModel:BaseModel
         _pause = false;
     }
 
-    public void ChangeSpeed(float speed)
+    public void ChangeSpeed()
     {
-        _fallTime = _fallTime*speed;
+        if (_fallTime == Consts.ShapeDownSpeed)
+            _fallTime = Consts.ShapeDownSpeedX2;
+        else if(_fallTime== Consts.ShapeDownSpeedX2)
+            _fallTime = Consts.ShapeDownSpeed;
     }
     public void IsValidMapPosition(Transform shape,object operation)
     {
@@ -107,8 +110,8 @@ public class MapModel:BaseModel
         }
         int count = CheckMap();
         SendEvent(Consts.E_ShapePlaceFinished, count);
-        ChangeSpeed(Consts.ShapeFallDownSpeed);
-
+        _fallTime = Consts.ShapeDownSpeed;
+        IsGameover();
     }
 
     private int CheckMap()
@@ -123,6 +126,7 @@ public class MapModel:BaseModel
                 DeleteRow(i);
                 MoveDownRowsAbove(i + 1);
                 i--;
+                AudioManager.Instance.PlayUIMusic(Consts.A_Lineclear);
             }
         }
         return count;
@@ -164,6 +168,22 @@ public class MapModel:BaseModel
                 _mapTransform[i, row - 1] = _mapTransform[i, row];
                 _mapTransform[i, row] = null;
                 _mapTransform[i, row - 1].position += new Vector3(0, -1, 0);
+            }
+        }
+    }
+
+    public void IsGameover()
+    {
+        for(int i=NORMAL_ROWS;i<MAX_ROWS;i++)
+        {
+            for (int j = 0; j < MAX_COLUMNS; j++)
+            { 
+                if(_mapTransform[j,i]!=null)
+                {
+                    AudioManager.Instance.PlayUIMusic(Consts.A_Gameover);
+                    SendEvent(Consts.E_GameEnd, false);
+                    SendEvent(Consts.E_EnterLoseGameView);
+                }
             }
         }
     }

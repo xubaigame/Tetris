@@ -64,6 +64,7 @@ public static class Consts
     public readonly static string A_Lineclear = "Lineclear";
     public readonly static string A_Gameover = "Gameover";
 
-    public readonly static float ShapeFallDownSpeed = 8f;
+    public readonly static float ShapeDownSpeed = 0.8f;
+    public readonly static float ShapeDownSpeedX2 = 0.1f;
     public readonly static int ClearLineScore = 100;
 }

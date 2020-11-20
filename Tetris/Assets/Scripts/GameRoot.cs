@@ -17,6 +17,7 @@ public class GameRoot : MonoBehaviour
     public BaseView LoseGameView;
     public void Start()
     {
+        Screen.SetResolution(607, 1080, false);
         MVCSystem.RegisterController(Consts.E_GameStart,typeof(GameStartController));
 
         MVCSystem.SendEvent(Consts.E_GameStart,MenuView,GameView,TopListView,SettingView, LoseGameView);

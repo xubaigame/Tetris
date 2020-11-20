@@ -12,6 +12,6 @@ public class ChangeSpeedController : BaseController
 {
     public override void Execute(params object[] datas)
     {
-        (GetModel(Consts.M_Map) as MapModel).ChangeSpeed((float)datas[0]);
+        (GetModel(Consts.M_Map) as MapModel).ChangeSpeed();
     }
 }

@@ -68,7 +68,7 @@ public class SettingView : BaseView
 
     public void OnChangeMuteStateButtonDown()
     {
-        AudioManager.Instance.PlayUIMusic(Consts.A_Balloon);
+        AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         SendEvent(Consts.E_ChangeMuteStart);
     }
 }
