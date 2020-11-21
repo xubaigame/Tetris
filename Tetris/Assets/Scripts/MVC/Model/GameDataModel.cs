@@ -10,6 +10,7 @@ using UnityEngine;
 
 public class GameDataModel : BaseModel
 {
+    #region 字段
     private int _maxCameraSize = 18;
     private int _minCameraSize = 13;
     private int _currentScore = 0;
@@ -17,25 +18,34 @@ public class GameDataModel : BaseModel
     private int _gameCount = 0;
     private int _mute = 0;
     private bool _isPlaying = false;
+    #endregion
 
+    #region 属性
     public override string Name
     {
         get => Consts.M_GameData;
     }
-    public int MinCameraSize { get => _minCameraSize;}
-    public int MaxCameraSize { get => _maxCameraSize;}
-    public int CurrentScore { get => _currentScore;}
-    public int HightestScore { get => _hightestScore;}
-    public int GameCount { get => _gameCount;}
-    public int Mute { get => _mute;}
-    public bool IsPlaying { get => _isPlaying;}
+    public int MinCameraSize { get => _minCameraSize; }
+    public int MaxCameraSize { get => _maxCameraSize; }
+    public int CurrentScore { get => _currentScore; }
+    public int HightestScore { get => _hightestScore; }
+    public int GameCount { get => _gameCount; }
+    public int Mute { get => _mute; }
+    public bool IsPlaying { get => _isPlaying; }
+    #endregion
 
+    /// <summary>
+    /// 数据模型初始化
+    /// </summary>
     public void InitData()
     {
         LoadData();
         SendEvent(Consts.E_EnterMenuView,true);
     }
 
+    /// <summary>
+    /// 加载本地保存数据
+    /// </summary>
     public void LoadData()
     {
         if(PlayerPrefs.HasKey(Consts.P_GameCount))
@@ -51,6 +61,10 @@ public class GameDataModel : BaseModel
             _mute = PlayerPrefs.GetInt(Consts.P_Mute);
         }
     }
+
+    /// <summary>
+    /// 将内存数据保存至本地
+    /// </summary>
     public void SaveData()
     {
         
@@ -59,6 +73,10 @@ public class GameDataModel : BaseModel
         PlayerPrefs.SetInt(Consts.P_Mute, Mute);
     }
 
+    /// <summary>
+    /// 得分方法
+    /// </summary>
+    /// <param name="score">得分</param>
     public void AddCurrentScore(int score)
     {
         _currentScore += score;
@@ -68,6 +86,10 @@ public class GameDataModel : BaseModel
         }
         SendEvent(Consts.E_AddCurrentScoreFinished);
     }
+
+    /// <summary>
+    /// 清除本地保存数据
+    /// </summary>
     public void ClearData()
     {
         if (IsPlaying)
@@ -82,8 +104,9 @@ public class GameDataModel : BaseModel
         } 
         SendEvent(Consts.E_ClearDataFinished);
     }
+
     /// <summary>
-    /// 改变静音状态
+    /// 静音/接触静音
     /// </summary>
     public void ChangeMuteState()
     {
@@ -98,6 +121,9 @@ public class GameDataModel : BaseModel
         SendEvent(Consts.E_ChangeMuteFinished, Mute);
     }
 
+    /// <summary>
+    /// 开始一局新游戏
+    /// </summary>
     public void NewGame()
     {
         _currentScore = 0;
@@ -105,6 +131,9 @@ public class GameDataModel : BaseModel
         _isPlaying = true;
     }
 
+    /// <summary>
+    /// 游戏结束方法
+    /// </summary>
     public void GameEnd()
     {
         _isPlaying = false;

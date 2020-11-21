@@ -39,6 +39,7 @@ public static class Consts
     public readonly static string E_ChangShaepDownSpeed = "ChangShaepDownSpeed";
     public readonly static string E_PauseGame = "PauseGame";
     public readonly static string E_ResumeGame = "ResumeGame";
+
     //ViewName
     public readonly static string V_Menu = "MenuView";
     public readonly static string V_Game = "GameView";
@@ -64,6 +65,7 @@ public static class Consts
     public readonly static string A_Lineclear = "Lineclear";
     public readonly static string A_Gameover = "Gameover";
 
+    //Others
     public readonly static float ShapeDownSpeed = 0.8f;
     public readonly static float ShapeDownSpeedX2 = 0.1f;
     public readonly static int ClearLineScore = 100;

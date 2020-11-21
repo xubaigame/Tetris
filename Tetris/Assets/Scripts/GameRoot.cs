@@ -10,6 +10,7 @@ using UnityEngine;
 
 public class GameRoot : MonoBehaviour 
 {
+    //View引用
     public BaseView MenuView;
     public BaseView GameView;
     public BaseView TopListView;
@@ -17,19 +18,24 @@ public class GameRoot : MonoBehaviour
     public BaseView LoseGameView;
     public void Awake()
     {
+        //获得屏幕分辨率列表
         Resolution[] resolutions = Screen.resolutions;
+        //根据游戏设计分辨率（1080*1920）计算当前屏幕应该显示的窗口分辨率
         Screen.SetResolution(1080 * (resolutions [resolutions.Length-1].height- 200) / 1920, resolutions[resolutions.Length - 1].height-200, false);
     }
     public void Start()
     {
+        //注册游戏开始事件
         MVCSystem.RegisterController(Consts.E_GameStart,typeof(GameStartController));
 
+        //出发游戏开始事件
         MVCSystem.SendEvent(Consts.E_GameStart,MenuView,GameView,TopListView,SettingView, LoseGameView);
         
     }
 
     public void OnDestroy()
     {
+        //关闭游戏是保存数据
         MVCSystem.SendEvent(Consts.E_SaveData);
     }
 }

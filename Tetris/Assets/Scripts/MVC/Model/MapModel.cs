@@ -10,12 +10,8 @@ using UnityEngine;
 
 public class MapModel:BaseModel 
 {
-    public override string Name
-    {
-        get => Consts.M_Map;
-    }
-    
 
+    #region 字段
     public const int NORMAL_ROWS = 20;
     public const int MAX_ROWS = 23;
     public const int MAX_COLUMNS = 10;
@@ -23,23 +19,43 @@ public class MapModel:BaseModel
     private float _fallTime = Consts.ShapeDownSpeed;
 
     private bool _pause = false;
-    public bool Pause { get => _pause; }
-    public float FallTime { get => _fallTime;}
+    #endregion
 
+    #region 属性
+    public override string Name
+    {
+        get => Consts.M_Map;
+    }
+    public bool Pause { get => _pause; }
+    public float FallTime { get => _fallTime; }
+    #endregion
+
+    //地图信息
     private Transform[,] _mapTransform = new Transform[MAX_COLUMNS, MAX_ROWS];
 
+    /// <summary>
+    /// 开始一局新游戏
+    /// </summary>
     public void NewGame()
     {
         ClearMap();
         _pause = false;
     }
 
+    /// <summary>
+    /// 游戏结束方法
+    /// </summary>
+    /// <param name="clearMap">是否清空地图</param>
     public void GameEnd(bool clearMap)
     {
         if(clearMap)
             ClearMap();
         _pause = true;
     }
+
+    /// <summary>
+    /// 清空地图
+    /// </summary>
     public void ClearMap()
     {
         for (int i = 0; i < MAX_COLUMNS; i++)
@@ -54,16 +70,29 @@ public class MapModel:BaseModel
             }
         }
     }
+    #region 暂停/恢复方法
+    //可优化，二合一
+
+    /// <summary>
+    /// 暂停游戏
+    /// </summary>
     public void PauseGame()
     {
         _pause = true;
     }
 
+    /// <summary>
+    /// 继续游戏
+    /// </summary>
     public void ResumeGame()
     {
         _pause = false;
     }
+    #endregion
 
+    /// <summary>
+    /// 更改方块下落速度
+    /// </summary>
     public void ChangeSpeed()
     {
         if (_fallTime == Consts.ShapeDownSpeed)
@@ -71,6 +100,12 @@ public class MapModel:BaseModel
         else if(_fallTime== Consts.ShapeDownSpeedX2)
             _fallTime = Consts.ShapeDownSpeed;
     }
+
+    /// <summary>
+    /// 当前移动是否有效
+    /// </summary>
+    /// <param name="shape">方块位置</param>
+    /// <param name="operation">移动方向</param>
     public void IsValidMapPosition(Transform shape,object operation)
     {
         bool result = true;
@@ -94,11 +129,20 @@ public class MapModel:BaseModel
         SendEvent(Consts.E_ShapeMoveFinished, result, operation);
     }
 
+    /// <summary>
+    /// 判断当前位置是否处于地图中
+    /// </summary>
+    /// <param name="position">当前位置</param>
+    /// <returns>判断结果</returns>
     private bool IsMapPosition(Vector2 position)
     {
         return position.x >= 0 && position.x < MAX_COLUMNS && position.y >= 0;
     }
 
+    /// <summary>
+    /// 将方块添加至地图中
+    /// </summary>
+    /// <param name="shape">方块位置</param>
     public void ShapePlace(Transform shape)
     {
         foreach (Transform child in shape)
@@ -113,7 +157,11 @@ public class MapModel:BaseModel
         _fallTime = Consts.ShapeDownSpeed;
         IsGameover();
     }
-
+    
+    /// <summary>
+    /// 检查地图是否存在可消除行
+    /// </summary>
+    /// <returns>可消除行数</returns>
     private int CheckMap()
     {
         int count = 0;
@@ -132,6 +180,11 @@ public class MapModel:BaseModel
         return count;
     }
 
+    /// <summary>
+    /// 检查行是否可消除
+    /// </summary>
+    /// <param name="row">行号</param>
+    /// <returns>消除状态</returns>
     private bool CheckIsRowFull(int row)
     {
         for (int i = 0; i < MAX_COLUMNS; i++)
@@ -142,6 +195,10 @@ public class MapModel:BaseModel
         return true;
     }
 
+    /// <summary>
+    /// 消除行
+    /// </summary>
+    /// <param name="row">行号</param>
     private void DeleteRow(int row)
     {
         for(int i=0;i<MAX_COLUMNS;i++)
@@ -151,6 +208,10 @@ public class MapModel:BaseModel
         }
     }
 
+    /// <summary>
+    /// 将行号上方所有行向下移动
+    /// </summary>
+    /// <param name="row">行号</param>
     private void MoveDownRowsAbove(int row)
     {
         for (int i = row; i < MAX_ROWS; i++)
@@ -159,6 +220,10 @@ public class MapModel:BaseModel
         }
     }
 
+    /// <summary>
+    /// 将行号上方一行向下移动
+    /// </summary>
+    /// <param name="row">行号</param>
     private void MoveDownRow(int row)
     {
         for (int i = 0; i < MAX_COLUMNS; i++)
@@ -172,6 +237,9 @@ public class MapModel:BaseModel
         }
     }
 
+    /// <summary>
+    /// 检查游戏是否结束
+    /// </summary>
     public void IsGameover()
     {
         for(int i=NORMAL_ROWS;i<MAX_ROWS;i++)

@@ -17,6 +17,10 @@ public class GameTools : MonoBehaviour
         Instance = this;
     }
 
+    /// <summary>
+    /// 删除场景中的游戏物体
+    /// </summary>
+    /// <param name="go">游戏物体</param>
     public void DestroyGameObject(GameObject go)
     {
         Destroy(go);

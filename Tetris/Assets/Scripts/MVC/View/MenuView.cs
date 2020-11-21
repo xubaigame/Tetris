@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class MenuView : BaseView
 {
-
+    // UI元素引用
     public Text gameTitle;
     public RectTransform buttonGroup;
     public Transform map;
@@ -24,14 +24,20 @@ public class MenuView : BaseView
     {
         get => Consts.V_Menu;
     }
+
+    /// <summary>
+    /// 注册响应事件
+    /// </summary>
     public override void RegisterAttationEvents()
     {
+        //注册进入菜单界面响应事件
         RegisterAttationEvent(Consts.E_EnterMenuView);
     }
 
     public override void HandleEvent(string eventName, params object[] datas)
     {
-        if(eventName.Equals(Consts.E_EnterMenuView))
+        //响应进入菜单界面事件
+        if (eventName.Equals(Consts.E_EnterMenuView))
         {
             if((bool)datas[0])
                 EnterView(datas);
@@ -41,6 +47,10 @@ public class MenuView : BaseView
         }
     }
 
+    /// <summary>
+    /// 进入界面方法
+    /// </summary>
+    /// <param name="datas">数据</param>
     private void EnterView(params object[] datas)
     {
         //map.localScale = Vector3.zero;
@@ -53,6 +63,9 @@ public class MenuView : BaseView
         map.DOScale(Vector3.one, 0.5f);
     }
 
+    /// <summary>
+    /// 离开界面方法
+    /// </summary>
     private void LeaveView()
     {
         gameTitle.rectTransform.DOAnchorPosY(gameTitle.rectTransform.sizeDelta.y, 0.5f);
@@ -63,6 +76,9 @@ public class MenuView : BaseView
         
     }
 
+    /// <summary>
+    /// 开始游戏按钮点击事件
+    /// </summary>
     public void OnPlayGameButtonDown()
     {
         AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
@@ -70,6 +86,10 @@ public class MenuView : BaseView
         SendEvent(Consts.E_EnterGameView,true);
         //SendEvent(Consts.E_EnterLoseGameView);
     }
+
+    /// <summary>
+    /// 继续游戏按钮点击事件
+    /// </summary>
     public void OnRestartGameButtonDown()
     {
         AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
@@ -78,11 +98,19 @@ public class MenuView : BaseView
         SendEvent(Consts.E_ResumeGame);
         SendEvent(Consts.E_EnterGameView,false);
     }
+
+    /// <summary>
+    /// 打开设置界面按钮点击事件
+    /// </summary>
     public void OnSettingGameButtonDown()
     {
         AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
         SendEvent(Consts.E_EnterSettingView);
     }
+
+    /// <summary>
+    /// 打开排行版界面点击事件
+    /// </summary>
     public void OnTopListButtonDown()
     {
         AudioManager.Instance.PlayUIMusic(Consts.A_Cursor);
