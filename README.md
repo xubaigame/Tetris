@@ -6,16 +6,14 @@
 
 ## 一、项目截图
 
-<center>
-<img src="README/菜单界面.png" alt="菜单界面" style="zoom:45%;" />
-<img src="README/设置界面.png" alt="设置界面" style="zoom:45%;" />
-<img src="README/游戏结束.png" alt="游戏结束" style="zoom:45%;" />
+<center class="half">
+  
+<img src="README/菜单界面.png" alt="菜单界面" width = "300"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/设置界面.png" alt="设置界面" width = "300"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/游戏结束.png" alt="游戏结束" width = "300"/>
 </center>
 
-<center>
-<img src="README/游戏界面.png" alt="游戏界面" style="zoom:45%;" />
-<img src="README/游戏暂停.png" alt="游戏暂停" style="zoom:45%;" />
-<img src="README/最高分界面.png" alt="最高分界面" style="zoom:45%;" />
+<center class="half">
+  
+<img src="README/游戏界面.png" alt="游戏界面"  width = "300" /><img src="README/游戏暂停.png" alt="游戏暂停"  width = "300" /><img src="README/最高分界面.png" alt="最高分界面"  width = "300" />
 </center>
 
 
@@ -89,9 +87,9 @@
 
 但是该部分所说的分辨率适配并不是上述意义的分辨率适配。因为游戏是一个竖屏游戏，在打包时我们一般选用窗口运行的方式。但是在Unity中只能设置一个默认的分辨率，当游戏运行在不同分辨率的屏幕上时展现的效果时不同的。
 
-<center>
-<img src="README/2K分辨率下效果.png" alt="2K分辨率下效果"  style="zoom: 40%;"/>
-<img src="README/1080P分辨率下效果.png" alt="1080P分辨率下效果" style="zoom: 40%;"/>
+<center class="half">
+  
+<img src="README/2K分辨率下效果.png" alt="2K分辨率下效果" width = "400"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/1080P分辨率下效果.png" alt="1080P分辨率下效果"  width = "400"/>
 </center>
 
 左边是2K分辨率的屏幕，右边是1080P的屏幕。可以看到，利用Unity打包设置中的分辨率设置，在不同分辨率的屏幕下展示的效果是不同的。也就意味着设置的分辨率是死的。
@@ -108,9 +106,9 @@ Screen.SetResolution(width, height, false);
 
 这样在不同分辨率的显示器下，看到的窗口大小都是一样的（即使当前显示器的分辨率不是建议分辨率）。
 
-<center>
-<img src="README/2K适配后.png" alt="2K适配后" style="zoom:40%;" />
-<img src="README/1080P适配后.png" alt="1080P适配后" style="zoom:40%;" />
+<center class="half">
+  
+<img src="README/2K适配后.png" alt="2K适配后" width = "400" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/1080P适配后.png" alt="1080P适配后" width = "400" />
 </center>
 
 
