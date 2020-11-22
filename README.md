@@ -8,12 +8,12 @@
 
 <center class="half">
   
-<img src="README/菜单界面.png" alt="菜单界面" width = "200"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/设置界面.png" alt="设置界面" width = "200"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/游戏结束.png" alt="游戏结束" width = "200"/>
+<img src="README/菜单界面.png" alt="菜单界面" width = "250"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/设置界面.png" alt="设置界面" width = "250"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/游戏结束.png" alt="游戏结束" width = "250"/>
 </center>
 
 <center class="half">
   
-<img src="README/游戏界面.png" alt="游戏界面"  width = "200" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/游戏暂停.png" alt="游戏暂停"  width = "200" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/最高分界面.png" alt="最高分界面"  width = "200" />
+<img src="README/游戏界面.png" alt="游戏界面"  width = "250" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/游戏暂停.png" alt="游戏暂停"  width = "250" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/最高分界面.png" alt="最高分界面"  width = "250" />
 </center>
 
 
