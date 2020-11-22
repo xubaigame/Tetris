@@ -13,7 +13,7 @@
 
 <center class="half">
   
-<img src="README/游戏界面.png" alt="游戏界面"  width = "300" /><img src="README/游戏暂停.png" alt="游戏暂停"  width = "300" /><img src="README/最高分界面.png" alt="最高分界面"  width = "300" />
+<img src="README/游戏界面.png" alt="游戏界面"  width = "300" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/游戏暂停.png" alt="游戏暂停"  width = "300" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="README/最高分界面.png" alt="最高分界面"  width = "300" />
 </center>
 
 
