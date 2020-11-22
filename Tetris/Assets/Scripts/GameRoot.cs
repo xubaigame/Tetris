@@ -18,10 +18,8 @@ public class GameRoot : MonoBehaviour
     public BaseView LoseGameView;
     public void Awake()
     {
-        //获得屏幕分辨率列表
-        Resolution[] resolutions = Screen.resolutions;
-        //根据游戏设计分辨率（1080*1920）计算当前屏幕应该显示的窗口分辨率
-        Screen.SetResolution(1080 * (resolutions [resolutions.Length-1].height- 200) / 1920, resolutions[resolutions.Length - 1].height-200, false);
+        //获得当前屏幕分辨率,根据游戏设计分辨率（1080*1920）计算当前屏幕应该显示的窗口分辨率
+        Screen.SetResolution(1080 * (Screen.currentResolution.height - 200) / 1920, Screen.currentResolution.height - 200, false);
     }
     public void Start()
     {
